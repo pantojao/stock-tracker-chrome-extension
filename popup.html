@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles.css">
+  
+  <title>Stock Alert</title>
+</head>
+<body>
+    <h1>Watch List</h1>
+    <form id="stock-form">
+      <div class="stock-inputs">
+        <label for="ticker" class="ticker">Ticker</label>
+        <input type="text" name="ticker" id="ticker">
+        <p>Recieve Alert When</p>
+        <label for="min-price">Minimum Price:</label>
+        <input id="min" type="number" name="min-price" placeholder="0">
+        <label for="max-price">Maximum Price:</label>
+        <input id="max" type="number" name="max-price" placeholder="2000">
+        <input type="submit">
+      </div>
+    </form>
+</body>
+<script src='bundle.js' async></script>
+</html>

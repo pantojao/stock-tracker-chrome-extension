@@ -1,11 +1,15 @@
 {
-  "manifest_version":2,
+  "manifest_version":3,
   "name": "Stock Tracker",
   "version": "0.1.0",
+  "host_permissions": ["https://www.google.com/", "https://*/", "http://*/"],
+  "action": {
+    "default_popup": "popup.html"
+  },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["script.js"],
+      "js": ["getData.js", "script.js"],
       "css":["styles.css"]
     }
   ]
