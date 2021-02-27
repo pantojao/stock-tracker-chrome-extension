@@ -1,8 +1,34 @@
 body{
   font-family: sans-serif;
+  height: 600px;
+  width: 800px; 
 }
 
 
 input{
-  margin-bottom: 1em; 
+  margin: 1em auto; 
+}
+
+form{
+  display: none; 
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 50;
+}
+
+.add-stock{
+  display: inline-block;
+
+}
+
+h1{
+  font-size: 1.25rem;
+}
+
+.header{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }

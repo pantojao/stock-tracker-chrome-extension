@@ -6,27 +6,29 @@ class Stock {
     this.minimum = minimum;
     this.maximum = maximum;
     this.name = name;
+    this.current = null;
+    this.opening = null;
+    this.difference = null;
   }
 
   async updatePrice() {
     const priceData = await fetchInfo(this.ticker);
-    const alert = this.checkForAlert(priceData);
-    if (alert) {
-      alert(alert);
-    }
+    // this.checkForAlert(priceData);
+    const { difference, percentageChange, openingPrice, currentPrice } = data;
+    this.current = currentPrice;
+    this.opening = openingPrice;
+    this.percentageChange = percentageChange;
+    this.difference = difference;
   }
 
   checkForAlert(data) {
-    const { difference, percentageChange, openingPrice, currentPrice } = data;
-
+    const currentPrice = data.currentPrice;
     if (currentPrice >= this.maximum) {
       this.maximum = Infinity;
-      return "Current Price Is Above Maximum" + this.maximum;
+      alert("Current Price Is Above Maximum" + this.maximum);
     } else if (currentPrice <= this.minimum) {
       this.minimum = -Infinity;
-      return "Current Price Is Below Minimum:" + this.minimum;
-    } else {
-      return false;
+      alert("Current Price Is Below Minimum:" + this.minimum);
     }
   }
 }
@@ -50,7 +52,6 @@ class WatchList {
 
   async updatePrices() {
     const promises = this.list.forEach(async (stock) => {
-      console.log(stock.ticker);
       await stock.updatePrice();
     });
   }

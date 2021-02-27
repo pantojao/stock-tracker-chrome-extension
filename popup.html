@@ -9,18 +9,19 @@
   <title>Stock Alert</title>
 </head>
 <body>
-    <h1>Watch List</h1>
-    <form id="stock-form">
-      <div class="stock-inputs">
+    <div class="header">
+      <h1>Watch List</h1>
+      <button class="add-stock">Add Stock</button>
+    </div>
+
+    <form id="stock-form" >
         <label for="ticker" class="ticker">Ticker</label>
         <input type="text" name="ticker" id="ticker">
-        <p>Recieve Alert When</p>
         <label for="min-price">Minimum Price:</label>
         <input id="min" type="number" name="min-price" placeholder="0">
         <label for="max-price">Maximum Price:</label>
         <input id="max" type="number" name="max-price" placeholder="2000">
         <input type="submit">
-      </div>
     </form>
 </body>
 <script src='bundle.js' async></script>

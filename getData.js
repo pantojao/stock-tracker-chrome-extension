@@ -2,6 +2,7 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 
 async function fetchInfo(ticker) {
+  console.log("fetching")
   const $ = await fetchHTML(ticker);
   const currentPrice = parseFloat(
     $(".intraday__price").children().last().text()
@@ -13,12 +14,14 @@ async function fetchInfo(ticker) {
 }
 
 async function fetchName(ticker) {
+  console.log("fetching Name")
   const $ = await fetchHTML(ticker);
   const name = $(".company__name").text();
   return name ? name : false;
 }
 
 async function fetchHTML(ticker) {
+ 
   const url = `https://www.marketwatch.com/investing/fund/${ticker}`;
   const { data } = await axios.get(url);
   return cheerio.load(data);
