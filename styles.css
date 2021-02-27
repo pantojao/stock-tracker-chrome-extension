@@ -20,7 +20,6 @@ form{
 
 .add-stock{
   display: inline-block;
-
 }
 
 h1{
@@ -32,3 +31,26 @@ h1{
   justify-content: space-around;
   align-items: center;
 }
+
+
+/* Stock Info */
+
+.stock-info{
+  width: 95%;
+  margin: 0 auto;
+}
+
+table {
+  border-spacing: 5px;
+}
+
+th, td {
+  padding: 10px 15px;
+}
+
+
+th{
+  text-align: left;
+}
+
+

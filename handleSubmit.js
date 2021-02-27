@@ -14,7 +14,7 @@ async function handleSubmit(event){
     console.log("Already Tracking");
     document.getElementById("ticker").setCustomValidity("Already On Watchlist");
     return;
-  }
+  }             
   
 
   const name = await fetchName(ticker);

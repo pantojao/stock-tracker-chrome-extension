@@ -11,6 +11,7 @@ window.onload = function(){
 
 const form = document.getElementById("stock-form");
 const button = document.querySelector(".add-stock")
+const table = document.querySelector(".stock-info")
 const ticker = document.getElementById("ticker")
 
 form.addEventListener("submit", function (event) {
@@ -18,19 +19,19 @@ form.addEventListener("submit", function (event) {
   handleSubmit(event)
 });
 
-
-
-
 button.addEventListener("click", function(){
-    if (form.style.display === "flex"){
+    if (table.style.display === "table"){
+      table.style.display="none"
       form.style.display = "none"
       button.textContent = "Add Stock"
-
+      
     } else {
+      table.style.display="table"
       form.style.display = "flex"
       button.textContent = "View Stocks"
+
     }
-    console.log(form.style.display == "none")
+    console.log(table.style.display)
 })
 
 
