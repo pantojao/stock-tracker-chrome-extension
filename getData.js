@@ -21,7 +21,6 @@ async function fetchName(ticker) {
 }
 
 async function fetchHTML(ticker) {
- 
   const url = `https://www.marketwatch.com/investing/fund/${ticker}`;
   const { data } = await axios.get(url);
   return cheerio.load(data);

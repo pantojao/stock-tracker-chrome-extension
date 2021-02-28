@@ -6,23 +6,24 @@ class Stock {
     this.minimum = minimum;
     this.maximum = maximum;
     this.name = name;
-    this.current = null;
+    this.price = null;
     this.opening = null;
-    this.difference = null;
+    this.change = null;
+    this.percentageChange = null;
   }
 
   async updatePrice() {
     const priceData = await fetchInfo(this.ticker);
     // this.checkForAlert(priceData);
-    const { difference, percentageChange, openingPrice, currentPrice } = data;
-    this.current = currentPrice;
+    const { change, percentageChange, openingPrice, price } = data;
+    this.price = price;
     this.opening = openingPrice;
     this.percentageChange = percentageChange;
-    this.difference = difference;
+    this.change = change;
   }
 
   checkForAlert(data) {
-    const currentPrice = data.currentPrice;
+    const currentPrice = data.price;
     if (currentPrice >= this.maximum) {
       this.maximum = Infinity;
       alert("Current Price Is Above Maximum" + this.maximum);
@@ -31,6 +32,7 @@ class Stock {
       alert("Current Price Is Below Minimum:" + this.minimum);
     }
   }
+  
 }
 
 class WatchList {

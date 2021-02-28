@@ -38,9 +38,6 @@ h1{
 .stock-info{
   width: 95%;
   margin: 0 auto;
-}
-
-table {
   border-spacing: 5px;
 }
 
@@ -48,9 +45,19 @@ th, td {
   padding: 10px 15px;
 }
 
-
 th{
   text-align: left;
+}
+
+.bold-text{
+  font-weight: bold;
+}
+.green-text{
+  color:green;
+}
+
+.red-text {
+  color: red; 
 }
 
 
