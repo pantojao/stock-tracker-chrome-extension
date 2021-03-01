@@ -1,4 +1,4 @@
-const { fetchInfo } = require("./getData");
+const { fetchInfo } = require("./handlers/getData");
 
 class Stock {
   constructor(ticker, minimum = 0, maximum = Infinity, name = null) {
@@ -14,35 +14,21 @@ class Stock {
 
   async updatePrice() {
     const priceData = await fetchInfo(this.ticker);
-    // this.checkForAlert(priceData);
-    const { change, percentageChange, openingPrice, price } = data;
-    this.price = price;
-    this.opening = openingPrice;
-    this.percentageChange = percentageChange;
-    this.change = change;
+    this.price = priceData.currentPrice;
+    this.opening = priceData.openingPrice;
+    this.percentageChange = priceData.percentageChange;
+    this.change = priceData.difference;
   }
-
-  checkForAlert(data) {
-    const currentPrice = data.price;
-    if (currentPrice >= this.maximum) {
-      this.maximum = Infinity;
-      alert("Current Price Is Above Maximum" + this.maximum);
-    } else if (currentPrice <= this.minimum) {
-      this.minimum = -Infinity;
-      alert("Current Price Is Below Minimum:" + this.minimum);
-    }
-  }
-  
 }
 
 class WatchList {
   constructor() {
-    this.list = new Set();
+    this.list = new Map();
   }
 
-  addStock(stock) {
-    if (!this.list.has(stock)) {
-      this.list.add(stock);
+  addStock(ticker, stockInfo) {
+    if (!this.list.has(ticker)) {
+      this.list.set(ticker,stockInfo);
     } else {
       throw new Error("Already Have Stock In Watch List");
     }
@@ -53,9 +39,14 @@ class WatchList {
   }
 
   async updatePrices() {
-    const promises = this.list.forEach(async (stock) => {
+    let allStocks = [...this.list]
+    const promises = allStocks.map(async ([ticker, stock]) => {
       await stock.updatePrice();
     });
+
+    Promise.all(promises)
+    console.log(JSON.stringify(allStocks[0][1]));
+
   }
 }
 

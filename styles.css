@@ -5,10 +5,10 @@ body{
 }
 
 
-input{
+/* input{
   margin: 1em auto; 
-}
-
+} */
+/* 
 form{
   display: none; 
   flex-flow: column wrap;
@@ -16,7 +16,7 @@ form{
   align-items: center;
   position: relative;
   z-index: 50;
-}
+} */
 
 .add-stock{
   display: inline-block;
