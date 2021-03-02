@@ -16,7 +16,7 @@ onloadFunction()
 
 const form = document.getElementById("stock-form");
 const button = document.querySelector(".add-stock");
-
+const tickerInput = document.getElementById("ticker");
 form.addEventListener("submit", (event) => {
   handleSubmit(event);
 });
@@ -24,4 +24,8 @@ form.addEventListener("submit", (event) => {
 button.addEventListener("click", ()  => {
   handleAddButton()
 });
+
+tickerInput.addEventListener("input", (event) => {
+  event.target.setCustomValidity("");
+})
 

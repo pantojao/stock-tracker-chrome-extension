@@ -9,19 +9,19 @@ async function handleSubmit(event){
   const ticker = document.getElementById("ticker").value;
   const min = document.getElementById("min").value;
   const max = document.getElementById("max").value;
-  
-  if (localStorage[ticker]) {
-    document.getElementById("ticker").setCustomValidity("Already On Watchlist");
-    return;
-  }             
-  
+  const tickerInput = document.getElementById("ticker")
+
   const name = await fetchName(ticker);
-  if (name) {
+
+  if (localStorage[ticker]) {
+    tickerInput.setCustomValidity("Already On Watchlist");
+    tickerInput.reportValidity()
+    return;
+  } else if (name) {
     storeInlocal(ticker, min, max, name);
   } else {
-    document
-      .getElementById("ticker")
-      .setCustomValidity("Sorry, Could Not Find Stock");
+    tickerInput.setCustomValidity("Sorry, Could Not Find Stock");
+    tickerInput.reportValidity()
   }
 }
 
