@@ -8,14 +8,12 @@ let watchList = new WatchList();
 async function onloadFunction(){
   watchList = await retrieveStorage(watchList);
 
+  console.log(JSON.stringify(watchList.list.get("nn")), "==========")
+
   await watchList.updatePrices();
 
-  let test = setTimeout(async() => {
-    console.log(Object.keys(watchList.list))
-    
-    await createTable(watchList);
-  }, 6000)
-  
+  console.log(JSON.stringify(watchList.list.get("nn")), "after update")
+  createTable(watchList);
 }
 
 onloadFunction()

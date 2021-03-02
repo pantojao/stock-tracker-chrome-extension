@@ -30,12 +30,12 @@ h1{
   display: flex;
   justify-content: space-around;
   align-items: center;
-}
+} 
 
 
 /* Stock Info */
 
-.stock-info{
+ .stock-info{
   width: 95%;
   margin: 0 auto;
   border-spacing: 5px;

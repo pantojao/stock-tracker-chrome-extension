@@ -27,11 +27,7 @@ class WatchList {
   }
 
   addStock(ticker, stockInfo) {
-    if (!this.list.has(ticker)) {
-      this.list.set(ticker,stockInfo);
-    } else {
-      throw new Error("Already Have Stock In Watch List");
-    }
+    this.list.set(ticker,stockInfo);
   }
 
   removeStock(stock) {
@@ -43,10 +39,7 @@ class WatchList {
     const promises = allStocks.map(async ([ticker, stock]) => {
       await stock.updatePrice();
     });
-
-    Promise.all(promises)
-    console.log(JSON.stringify(allStocks[0][1]));
-
+    await Promise.all(promises)
   }
 }
 
