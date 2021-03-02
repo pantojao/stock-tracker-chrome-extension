@@ -1,6 +1,6 @@
 const { storeInlocal } = require("./storageHandlers");
 
-function createTable(list) { 
+function createTable() { 
     const body = document.querySelector("body");
     let table = document.createElement("table");
     table.classList.add("stock-info");
@@ -14,15 +14,6 @@ function createTable(list) {
       tableHeaders.appendChild(currentHeader);
     }
     table.appendChild(tableHeaders);
-
-    for (let [ticker, stock] of list.list) {
-      let tableRow = document.createElement("tr");
-      let columns = createColumns(stock);
-      for (let column of columns) {
-        tableRow.appendChild(column);
-      }
-      table.appendChild(tableRow);
-    }
     body.appendChild(table);
 }
 
@@ -55,11 +46,23 @@ function createColumns(currentStock) {
   return [ticker, name, price, change, percentageChange];
 }
 
+function addStockRow(stock){
+  let table = document.querySelector(".stock-info")
+  let tableRow = document.createElement("tr");
+  console.log(stock)
+  let columns = createColumns(stock);
+  
+  for (let column of columns) {
+    tableRow.appendChild(column);
+  }
+  table.appendChild(tableRow);
+}
 
 
 module.exports = {
   createColumns,
-  createTable
+  createTable,
+  addStockRow
 };
 
 

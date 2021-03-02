@@ -1,5 +1,5 @@
 const { fetchInfo } = require("./handlers/getData");
-
+const {createColumns, addStockRow} = require("./handlers/tableHandlers")
 class Stock {
   constructor(ticker, minimum = 0, maximum = Infinity, name = null) {
     this.ticker = ticker;
@@ -18,6 +18,10 @@ class Stock {
     this.opening = priceData.openingPrice;
     this.percentageChange = priceData.percentageChange;
     this.change = priceData.difference;
+  }
+
+  displayStock(){
+    addStockRow(this)
   }
 }
 

@@ -1,14 +1,15 @@
-const { Stock, WatchList } = require("../classes.js");
+var { WatchList, Stock } = require("../classes.js");
+
 
 async function retrieveStorage(watchList) {
   const items =   {...localStorage};
-  
   let entries = Object.entries(items)
 
   let promises = entries.map(async([ticker, info]) => {
     let { min, max, name } = await JSON.parse(info);
-
     let stock = new Stock(ticker, min, max, name);
+    await stock.updatePrice()
+    stock.displayStock()
     await watchList.addStock(ticker, stock);
   })
 
